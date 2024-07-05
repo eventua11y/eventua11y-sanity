@@ -21,7 +21,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-is": "^18.3.1",
-    "sanity": "^3.47.1",
+    "sanity": "^3.48.1",
     "sanity-plugin-country-state-select": "^1.0.1",
     "styled-components": "^6.1.11"
   },
