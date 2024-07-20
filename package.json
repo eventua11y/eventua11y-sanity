@@ -32,7 +32,7 @@
     "eslint": "^9.5.0",
     "prettier": "^3.3.2",
     "sanity-plugin-recurring-dates": "^1.1.1",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "prettier": {
     "semi": false,
