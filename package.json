@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "@sanity/cross-dataset-duplicator": "^1.2.1",
-    "@sanity/vision": "^3.50.0",
+    "@sanity/vision": "^3.52.4",
     "esbuild": "^0.23.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
