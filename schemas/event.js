@@ -67,6 +67,12 @@ export const event = defineType({
       }
     },
     defineField({
+      title: 'Free of charge',
+      name: 'isFree',
+      type: 'boolean',
+      initialValue: false
+    }),
+    defineField({
       title: "Attendance Mode",
       name: "attendanceMode",
       type: "string",
