@@ -151,6 +151,22 @@ export const event = defineType({
       initialValue: false
     })
   ],
+  orderings: [
+    {
+      title: 'Chronological',
+      name: 'dateStartAsc',
+      by: [
+        {field: 'dateStart', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Reverse Chronological',
+      name: 'dateStartDesc',
+      by: [
+        {field: 'releaseDate', direction: 'desc'}
+      ]
+    }
+  ],
   preview: {
     select: {
       title: 'title',
