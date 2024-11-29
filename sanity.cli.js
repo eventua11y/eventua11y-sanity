@@ -1,13 +1,15 @@
 import {defineConfig} from 'sanity'
 
-// export default defineCliConfig({
-//   api: {
-//     projectId: '2g5zqxo3',
-//     dataset: 'production'
-//   }
-// })
+// CLI configuration
+export default defineConfig({
+  api: {
+    projectId: '2g5zqxo3',
+    dataset: 'production'
+  }
+})
 
-export default defineConfig([
+// Studio configuration
+export const studioConfig = defineConfig([
   {
     projectId: '2g5zqxo3',
     dataset: 'production',
