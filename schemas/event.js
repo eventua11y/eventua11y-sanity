@@ -150,7 +150,13 @@ export const event = defineType({
       type: "boolean",
       initialValue: false
     })
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'dateStart'
+    }
+  }
 })
 
 export default event;
