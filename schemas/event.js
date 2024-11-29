@@ -163,7 +163,7 @@ export const event = defineType({
       title: 'Reverse Chronological',
       name: 'dateStartDesc',
       by: [
-        {field: 'releaseDate', direction: 'desc'}
+        {field: 'dateStart', direction: 'desc'}
       ]
     }
   ],
