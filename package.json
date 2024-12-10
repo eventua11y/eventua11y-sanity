@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "@sanity/cross-dataset-duplicator": "^1.2.1",
+    "@sanity/google-maps-input": "^4.0.1",
     "@sanity/vision": "^3.50.0",
     "esbuild": "^0.23.0",
     "react": "^18.3.1",

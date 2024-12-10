@@ -96,6 +96,11 @@ export const event = defineType({
       type: "string",
       hidden: ({document}) => document?.attendanceMode === 'online'
     }),
+    defineField({
+      title: "Geo location",
+      name: "geopoint",
+      type: "geopoint",
+    }),
     // defineField({
     //   title: "Country",
     //   name: "country",

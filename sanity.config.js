@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {countryStateListPlugin} from 'sanity-plugin-country-state-select'
 import {recurringDates} from 'sanity-plugin-recurring-dates'
 import {crossDatasetDuplicator} from '@sanity/cross-dataset-duplicator'
+import {googleMapsInput} from '@sanity/google-maps-input'
 import {schemaTypes} from './schemas'
 
 export default defineConfig([
@@ -13,10 +14,19 @@ export default defineConfig([
     name: 'production',
     basePath: '/production',
     title: 'Production',
-    plugins: [deskTool(), visionTool(), countryStateListPlugin(), recurringDates(), crossDatasetDuplicator({
-      types: ['event'],
-      follow: []
-    })],
+    plugins: [
+      deskTool(),
+      visionTool(),
+      countryStateListPlugin(),
+      recurringDates(),
+      crossDatasetDuplicator({
+        types: ['event'],
+        follow: [],
+      }),
+      googleMapsInput({
+        apiKey: 'AIzaSyCUtKMpH3NgotgxmzlTB8PZPC7U8x99mKo',
+      }),
+    ],
     schema: {
       types: schemaTypes,
     },
@@ -27,7 +37,15 @@ export default defineConfig([
     name: 'development',
     basePath: '/test',
     title: 'Development',
-    plugins: [deskTool(), visionTool(), countryStateListPlugin(), recurringDates()],
+    plugins: [
+      deskTool(),
+      visionTool(),
+      countryStateListPlugin(),
+      recurringDates(),
+      googleMapsInput({
+        apiKey: 'AIzaSyCUtKMpH3NgotgxmzlTB8PZPC7U8x99mKo',
+      }),
+    ],
     schema: {
       types: schemaTypes,
     },
