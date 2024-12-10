@@ -43,7 +43,7 @@ export default defineConfig([
       countryStateListPlugin(),
       recurringDates(),
       googleMapsInput({
-        apiKey: process.env.GOOGLE_API,
+        apiKey: process.env.SANITY_STUDIO_GOOGLE_API,
       }),
     ],
     schema: {
