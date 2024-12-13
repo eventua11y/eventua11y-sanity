@@ -153,7 +153,7 @@ export const event = defineType({
       title: "Timezone",
       name: "timezone",
       type: "string",
-      description: "Must be IANA timezone name (e.g., 'America/New_York', 'Europe/London'). Cannot use abbreviations (EST, PST, etc.)",
+      description: "Must be IANA timezone name (e.g., 'America/New_York', 'Europe/London', 'Asia/Tokyo', 'Australia/Sydney', 'Europe/Berlin', 'Asia/Dubai', 'America/Los_Angeles', 'Europe/Moscow', 'Asia/Kolkata', 'America/New_York', 'America/Los_Angeles'). Cannot use abbreviations (EST, PST, etc.)",
       hidden: ({document}) => document?.scheduled === false
     }),
     defineField({
