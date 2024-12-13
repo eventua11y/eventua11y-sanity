@@ -150,6 +150,13 @@ export const event = defineType({
       hidden: ({document}) => document?.scheduled === false
     }),
     defineField({
+      title: "Timezone",
+      name: "timezone",
+      type: "string",
+      description: "Must be IANA timezone name (e.g., 'America/New_York', 'Europe/London'). Cannot use abbreviations (EST, PST, etc.)",
+      hidden: ({document}) => document?.scheduled === false
+    }),
+    defineField({
       title: "All day",
       name: "day",
       type: "boolean",
