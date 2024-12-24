@@ -4,7 +4,6 @@ import {visionTool} from '@sanity/vision'
 import {countryStateListPlugin} from 'sanity-plugin-country-state-select'
 import {recurringDates} from 'sanity-plugin-recurring-dates'
 import {crossDatasetDuplicator} from '@sanity/cross-dataset-duplicator'
-import {googleMapsInput} from '@sanity/google-maps-input'
 import {schemaTypes} from './schemas'
 
 export default defineConfig([
@@ -23,9 +22,6 @@ export default defineConfig([
         types: ['event'],
         follow: [],
       }),
-      googleMapsInput({
-        apiKey: 'AIzaSyCUtKMpH3NgotgxmzlTB8PZPC7U8x99mKo',
-      }),
     ],
     schema: {
       types: schemaTypes,
@@ -42,9 +38,6 @@ export default defineConfig([
       visionTool(),
       countryStateListPlugin(),
       recurringDates(),
-      googleMapsInput({
-        apiKey: process.env.SANITY_STUDIO_GOOGLE_API,
-      }),
     ],
     schema: {
       types: schemaTypes,
