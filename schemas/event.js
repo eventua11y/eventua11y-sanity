@@ -46,6 +46,17 @@ export const event = defineType({
       description: 'If this is part of a larger event, select it here.',
       hidden: ({document}) => document?.type === 'theme' || document?.isParent === true
     }),
+    defineField({
+      title: "Speakers",
+      name: "speakers",
+      type: "array",
+      of: [{
+        type: "reference",
+        to: [{ type: "person" }]
+      }],
+      description: "Add one or more speakers for this event",
+      hidden: ({document}) => !document?.parent
+    }),
     {
       title: 'Format',
       name: 'format',
@@ -161,16 +172,6 @@ export const event = defineType({
       name: "day",
       type: "boolean",
       initialValue: false
-    }),
-    defineField({
-      title: "Speakers",
-      name: "speakers",
-      type: "array",
-      of: [{
-        type: "reference",
-        to: [{ type: "person" }]
-      }],
-      description: "Add one or more speakers for this event"
     })
   ],
   orderings: [
