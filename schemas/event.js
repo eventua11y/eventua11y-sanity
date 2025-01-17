@@ -161,6 +161,16 @@ export const event = defineType({
       name: "day",
       type: "boolean",
       initialValue: false
+    }),
+    defineField({
+      title: "Speakers",
+      name: "speakers",
+      type: "array",
+      of: [{
+        type: "reference",
+        to: [{ type: "person" }]
+      }],
+      description: "Add one or more speakers for this event"
     })
   ],
   orderings: [
