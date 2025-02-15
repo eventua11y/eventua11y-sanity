@@ -54,8 +54,7 @@ export const event = defineType({
         type: "reference",
         to: [{ type: "person" }]
       }],
-      description: "Add one or more speakers for this event",
-      hidden: ({document}) => !document?.parent
+      description: "Add one or more speakers for this event"
     }),
     {
       title: 'Format',
