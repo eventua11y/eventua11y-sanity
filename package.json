@@ -24,7 +24,7 @@
     "react-is": "^19.1.0",
     "sanity": "^3.87.1",
     "sanity-plugin-country-state-select": "^1.0.3",
-    "styled-components": "^6.1.16"
+    "styled-components": "^6.1.18"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
