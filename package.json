@@ -17,22 +17,20 @@
   "dependencies": {
     "@sanity/cross-dataset-duplicator": "^1.5.0",
     "@sanity/google-maps-input": "^4.2.0",
-    "@sanity/vision": "^3.99.0",
+    "@sanity/vision": "^4.19.0",
     "esbuild": "^0.25.12",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-is": "^19.2.0",
-    "sanity": "^3.99.0",
-    "sanity-plugin-country-state-select": "^1.0.3",
+    "sanity": "^4.19.0",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
-    "@types/react": "^18.3.27",
+    "@types/react": "^19.2.7",
     "@types/styled-components": "^5.1.36",
     "eslint": "^9.39.1",
     "prettier": "^3.7.1",
-    "sanity-plugin-recurring-dates": "^1.4.1",
     "typescript": "^5.9.3"
   },
   "prettier": {

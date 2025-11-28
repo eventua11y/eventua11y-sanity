@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Sanity Studio instance for Eventua11y, managing content for the eventua11y.com website. It's a headless CMS built with Sanity v3 that handles accessibility-focused event data.
+This is a Sanity Studio instance for Eventua11y, managing content for the eventua11y.com website. It's a headless CMS built with Sanity v4 that handles accessibility-focused event data.
 
 ## Common Commands
 
@@ -37,8 +37,6 @@ Content types are defined in `/schemas/` and exported via `/schemas/index.js`:
 
 ### Key Plugins
 - `@sanity/cross-dataset-duplicator` - Event duplication between environments
-- `sanity-plugin-country-state-select` - Location selection
-- `sanity-plugin-recurring-dates` - Recurring event dates
 - `@sanity/vision` - GROQ query testing
 - `@sanity/google-maps-input` - Geographic data entry
 
