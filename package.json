@@ -23,7 +23,6 @@
     "react-dom": "^19.2.0",
     "react-is": "^19.2.0",
     "sanity": "^4.19.0",
-    "sanity-plugin-country-state-select": "^1.0.3",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {

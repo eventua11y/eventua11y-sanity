@@ -1,7 +1,6 @@
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
-import {countryStateListPlugin} from 'sanity-plugin-country-state-select'
 import {crossDatasetDuplicator} from '@sanity/cross-dataset-duplicator'
 import {schemaTypes} from './schemas'
 
@@ -15,7 +14,6 @@ export default defineConfig([
     plugins: [
       deskTool(),
       visionTool(),
-      countryStateListPlugin(),
       crossDatasetDuplicator({
         types: ['event'],
         follow: [],
@@ -34,7 +32,6 @@ export default defineConfig([
     plugins: [
       deskTool(),
       visionTool(),
-      countryStateListPlugin(),
     ],
     schema: {
       types: schemaTypes,

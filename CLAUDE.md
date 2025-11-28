@@ -37,7 +37,6 @@ Content types are defined in `/schemas/` and exported via `/schemas/index.js`:
 
 ### Key Plugins
 - `@sanity/cross-dataset-duplicator` - Event duplication between environments
-- `sanity-plugin-country-state-select` - Location selection
 - `@sanity/vision` - GROQ query testing
 - `@sanity/google-maps-input` - Geographic data entry
 
