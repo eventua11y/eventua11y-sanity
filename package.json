@@ -30,7 +30,7 @@
     "@types/react": "^19.2.7",
     "@types/styled-components": "^5.1.36",
     "eslint": "^9.39.1",
-    "prettier": "^3.7.1",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   },
   "prettier": {
