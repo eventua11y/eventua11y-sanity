@@ -53,3 +53,33 @@ The event schema (`/schemas/event.js`) has sophisticated conditional logic:
 - Events can reference speakers (person type)
 - Events can have parent-child relationships
 - Cross-dataset duplication for events between environments
+
+## Recurring Theme Events
+
+Theme events (type: "theme", attendanceMode: "none") are awareness days/weeks that recur annually. Create these for each new year.
+
+### Fixed Date Events
+| Event | Date |
+|-------|------|
+| World Braille Day | January 4 |
+| Raynaud's Awareness Month | February 1-28 |
+| Rheumatoid Arthritis Awareness Day | February 2 |
+| World Hearing Day | March 3 |
+| Dyscalculia Awareness Day | March 3 |
+| World Down Syndrome Day | March 21 |
+| World Parkinson's Day | April 11 |
+| World Wide Web Day | August 1 |
+| International Day of Sign Languages | September 23 |
+| World Stroke Day | October 29 |
+| Blue Beanie Day | November 30 |
+| International Day of People with Disabilities | December 3 |
+
+### Variable Date Events
+| Event | Rule | Reference |
+|-------|------|-----------|
+| International Epilepsy Day | 2nd Monday of February | internationalepilepsyday.org |
+| Repetitive Strain Injury Awareness Day | Last day of February | |
+| Neurodiversity Celebration Week | Mid-March (varies yearly) | neurodiversityweek.com |
+| Global Accessibility Awareness Day | 3rd Thursday of May | accessibility.day |
+| World Sight Day | 2nd Thursday of October | iapb.org/world-sight-day |
+| World Usability Day | 2nd Thursday of November | worldusabilityday.org |
