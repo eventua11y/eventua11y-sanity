@@ -48,6 +48,7 @@ The event schema (`/schemas/event.js`) has sophisticated conditional logic:
 - Attendance mode affects location field visibility
 - Call for speakers with closing dates
 - Scheduled vs unscheduled events
+- Single-day events should NOT have an end date (dateEnd) set
 
 ### Content Relationships
 - Events can reference speakers (person type)
