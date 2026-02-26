@@ -267,6 +267,9 @@ export const event = defineType({
       hidden: ({document}) => document?.callForSpeakers === false,
     }),
   ],
+  initialValue: {
+    eventStatus: 'scheduled',
+  },
   orderings: [
     {
       title: 'Chronological',
