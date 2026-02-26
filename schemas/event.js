@@ -71,6 +71,15 @@ export const event = defineType({
       initialValue: false,
     }),
     defineField({
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      group: 'details',
+      options: {
+        source: 'title',
+      },
+    }),
+    defineField({
       title: 'Website',
       name: 'website',
       type: 'url',
