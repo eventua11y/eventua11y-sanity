@@ -1,34 +1,34 @@
 import {defineType, defineField} from 'sanity'
 
 export const event = defineType({
-  title: "Events",
-  name: "event",
-  type: "document",
+  title: 'Events',
+  name: 'event',
+  type: 'document',
   fields: [
     defineField({
-      title: "Title",
-      name: "title",
-      type: "string",
-      validation: Rule => Rule.required()
+      title: 'Title',
+      name: 'title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      title: "Description",
-      name: "description",
-      type: "text",
-      validation: Rule => Rule.required()
+      title: 'Description',
+      name: 'description',
+      type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      title: "Type",
-      name: "type",
-      type: "string",
-      initialValue: "normal",
+      title: 'Type',
+      name: 'type',
+      type: 'string',
+      initialValue: 'normal',
       options: {
         list: [
-          { title: 'Normal', value: 'normal' },
-          { title: 'Theme', value: 'theme' },
+          {title: 'Normal', value: 'normal'},
+          {title: 'Theme', value: 'theme'},
         ],
-        layout: 'radio'
-      }
+        layout: 'radio',
+      },
     }),
     defineField({
       title: 'This is a parent event',
@@ -36,7 +36,7 @@ export const event = defineType({
       type: 'boolean',
       initialValue: false,
       description: 'Will this event have sub-events?',
-      hidden: ({document}) => document?.type === 'theme'
+      hidden: ({document}) => document?.type === 'theme',
     }),
     defineField({
       title: 'Part of',
@@ -44,17 +44,19 @@ export const event = defineType({
       type: 'reference',
       to: [{type: 'event'}],
       description: 'If this is part of a larger event, select it here.',
-      hidden: ({document}) => document?.type === 'theme' || document?.isParent === true
+      hidden: ({document}) => document?.type === 'theme' || document?.isParent === true,
     }),
     defineField({
-      title: "Speakers",
-      name: "speakers",
-      type: "array",
-      of: [{
-        type: "reference",
-        to: [{ type: "person" }]
-      }],
-      description: "Add one or more speakers for this event"
+      title: 'Speakers',
+      name: 'speakers',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'person'}],
+        },
+      ],
+      description: 'Add one or more speakers for this event',
     }),
     {
       title: 'Format',
@@ -62,54 +64,54 @@ export const event = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Talk', value: 'talk' },
-          { title: 'Workshop', value: 'workshop' },
-          { title: 'Tutorial', value: 'tutorial' },
-          { title: 'Roundtable', value: 'roundtable' },
-          { title: 'Competition', value: 'competition' },
-          { title: 'Panel', value: 'panel' },
-          { title: 'Interview', value: 'interview' },
-          { title: 'Demo', value: 'demo' },
-          { title: 'Keynote', value: 'keynote' },
-          { title: 'Announcement', value: 'announcement' },
-          { title: 'Other', value: 'other' }
-        ]
-      }
+          {title: 'Talk', value: 'talk'},
+          {title: 'Workshop', value: 'workshop'},
+          {title: 'Tutorial', value: 'tutorial'},
+          {title: 'Roundtable', value: 'roundtable'},
+          {title: 'Competition', value: 'competition'},
+          {title: 'Panel', value: 'panel'},
+          {title: 'Interview', value: 'interview'},
+          {title: 'Demo', value: 'demo'},
+          {title: 'Keynote', value: 'keynote'},
+          {title: 'Announcement', value: 'announcement'},
+          {title: 'Other', value: 'other'},
+        ],
+      },
     },
     defineField({
       title: 'Free of charge',
       name: 'isFree',
       type: 'boolean',
-      initialValue: false
+      initialValue: false,
     }),
     defineField({
-      title: "Attendance Mode",
-      name: "attendanceMode",
-      type: "string",
-      validation: Rule => Rule.required(),
-      initialValue: "none",
+      title: 'Attendance Mode',
+      name: 'attendanceMode',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+      initialValue: 'none',
       options: {
         list: [
-          { title: 'Online', value: 'online' },
-          { title: 'Offline', value: 'offline' },
-          { title: 'Mixed', value: 'mixed'},
-          { title: 'None', value: 'none'}
+          {title: 'Online', value: 'online'},
+          {title: 'Offline', value: 'offline'},
+          {title: 'Mixed', value: 'mixed'},
+          {title: 'None', value: 'none'},
         ],
-        layout: 'radio'
+        layout: 'radio',
       },
       // hide if type is theme
-      hidden: ({document}) => document?.type === 'theme'
+      hidden: ({document}) => document?.type === 'theme',
     }),
     defineField({
-      title: "Location",
-      name: "location",
-      type: "string",
-      hidden: ({document}) => document?.attendanceMode === 'online'
+      title: 'Location',
+      name: 'location',
+      type: 'string',
+      hidden: ({document}) => document?.attendanceMode === 'online',
     }),
     defineField({
-      title: "Geo location",
-      name: "geopoint",
-      type: "geopoint",
+      title: 'Geo location',
+      name: 'geopoint',
+      type: 'geopoint',
     }),
     // defineField({
     //   title: "Country",
@@ -122,79 +124,85 @@ export const event = defineType({
     //   },
     // }),
     defineField({
-      title: "Website",
-      name: "website",
-      type: "url"
+      title: 'Website',
+      name: 'website',
+      type: 'url',
     }),
     defineField({
       title: 'Call for speakers',
       name: 'callForSpeakers',
       type: 'boolean',
       initialValue: false,
-      hidden: ({document}) => document?.type === 'theme'
+      hidden: ({document}) => document?.type === 'theme',
     }),
     // Call for speakers closing date
     defineField({
-      title: "Call for speakers closing date",
-      name: "callForSpeakersClosingDate",
-      type: "datetime",
-      hidden: ({document}) => document?.callForSpeakers === false
+      title: 'Call for speakers closing date',
+      name: 'callForSpeakersClosingDate',
+      type: 'datetime',
+      options: {
+        allowTimeZoneSwitch: true,
+      },
+      hidden: ({document}) => document?.callForSpeakers === false,
     }),
     defineField({
       title: 'Scheduled',
       name: 'scheduled',
       type: 'boolean',
       initialValue: true,
-      hidden: ({document}) => !document?.parent || document?.type === 'theme'
+      hidden: ({document}) => !document?.parent || document?.type === 'theme',
     }),
     defineField({
-      title: "Starts",
-      name: "dateStart",
-      type: "datetime",
-      hidden: ({document}) => document?.scheduled === false
+      title: 'Starts',
+      name: 'dateStart',
+      type: 'datetime',
+      options: {
+        allowTimeZoneSwitch: true,
+      },
+      hidden: ({document}) => document?.scheduled === false,
     }),
     defineField({
-      title: "Ends",
-      name: "dateEnd",
-      type: "datetime",
-      hidden: ({document}) => document?.scheduled === false
+      title: 'Ends',
+      name: 'dateEnd',
+      type: 'datetime',
+      options: {
+        allowTimeZoneSwitch: true,
+      },
+      hidden: ({document}) => document?.scheduled === false,
     }),
     defineField({
-      title: "Timezone",
-      name: "timezone",
-      type: "string",
-      description: "Must be IANA timezone name (e.g., 'America/New_York', 'Europe/London', 'Asia/Tokyo', 'Australia/Sydney', 'Europe/Berlin', 'Asia/Dubai', 'America/Los_Angeles', 'Europe/Moscow', 'Asia/Kolkata', 'America/New_York', 'America/Los_Angeles'). Cannot use abbreviations (EST, PST, etc.)",
-      hidden: ({document}) => document?.scheduled === false
+      title: 'Timezone',
+      name: 'timezone',
+      type: 'string',
+      description:
+        "Must be IANA timezone name (e.g., 'America/New_York', 'Europe/London', 'Asia/Tokyo', 'Australia/Sydney', 'Europe/Berlin', 'Asia/Dubai', 'America/Los_Angeles', 'Europe/Moscow', 'Asia/Kolkata', 'America/New_York', 'America/Los_Angeles'). Cannot use abbreviations (EST, PST, etc.)",
+      hidden: ({document}) => document?.scheduled === false,
     }),
     defineField({
-      title: "All day",
-      name: "day",
-      type: "boolean",
-      initialValue: false
-    })
+      title: 'All day',
+      name: 'day',
+      type: 'boolean',
+      initialValue: false,
+    }),
   ],
   orderings: [
     {
       title: 'Chronological',
       name: 'dateStartAsc',
-      by: [
-        {field: 'dateStart', direction: 'asc'}
-      ]
+      by: [{field: 'dateStart', direction: 'asc'}],
     },
     {
       title: 'Reverse Chronological',
       name: 'dateStartDesc',
-      by: [
-        {field: 'dateStart', direction: 'desc'}
-      ]
-    }
+      by: [{field: 'dateStart', direction: 'desc'}],
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      subtitle: 'dateStart'
-    }
-  }
+      subtitle: 'dateStart',
+    },
+  },
 })
 
-export default event;
+export default event
