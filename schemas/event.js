@@ -166,6 +166,15 @@ export const event = defineType({
         allowTimeZoneSwitch: true,
       },
       hidden: ({document}) => document?.scheduled === false,
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const doc = context.document
+          // Required when the event is scheduled (scheduled defaults to true)
+          if (doc?.scheduled !== false && !value) {
+            return 'A start date is required for scheduled events'
+          }
+          return true
+        }),
     }),
     defineField({
       title: 'Ends',
@@ -176,6 +185,14 @@ export const event = defineType({
         allowTimeZoneSwitch: true,
       },
       hidden: ({document}) => document?.scheduled === false,
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const doc = context.document
+          if (value && doc?.dateStart && new Date(value) <= new Date(doc.dateStart)) {
+            return 'End date must be after the start date'
+          }
+          return true
+        }),
     }),
     defineField({
       title: 'Timezone',
