@@ -110,6 +110,13 @@ export const event = defineType({
       description: 'Add one or more speakers for this event',
       hidden: ({document}) => document?.type === 'theme',
     }),
+    defineField({
+      title: 'Organizer',
+      name: 'organizer',
+      type: 'reference',
+      to: [{type: 'organizer'}],
+      group: 'relationships',
+    }),
 
     // --- Location group ---
     defineField({
