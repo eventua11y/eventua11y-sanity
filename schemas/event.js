@@ -154,6 +154,19 @@ export const event = defineType({
       to: [{type: 'organizer'}],
       group: 'relationships',
     }),
+    defineField({
+      title: 'Topics',
+      name: 'topics',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'topic'}],
+        },
+      ],
+      group: 'relationships',
+      description: 'Link to one or more topics related to this event',
+    }),
 
     // --- Location group ---
     defineField({
