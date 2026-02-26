@@ -76,6 +76,34 @@ export const event = defineType({
       type: 'url',
       group: 'details',
     }),
+    defineField({
+      title: 'Event status',
+      name: 'eventStatus',
+      type: 'string',
+      group: 'details',
+      initialValue: 'scheduled',
+      hidden: ({document}) => document?.type === 'theme',
+      options: {
+        list: [
+          {title: 'Scheduled', value: 'scheduled'},
+          {title: 'Cancelled', value: 'cancelled'},
+          {title: 'Postponed', value: 'postponed'},
+          {title: 'Rescheduled', value: 'rescheduled'},
+        ],
+        layout: 'radio',
+      },
+    }),
+    defineField({
+      title: 'Keywords',
+      name: 'keywords',
+      type: 'array',
+      of: [{type: 'string'}],
+      group: 'details',
+      description: 'Tags or topics for this event (e.g. WCAG, screen readers, cognitive)',
+      options: {
+        layout: 'tags',
+      },
+    }),
 
     // --- Relationships group ---
     defineField({
@@ -109,6 +137,13 @@ export const event = defineType({
       group: 'relationships',
       description: 'Add one or more speakers for this event',
       hidden: ({document}) => document?.type === 'theme',
+    }),
+    defineField({
+      title: 'Organizer',
+      name: 'organizer',
+      type: 'reference',
+      to: [{type: 'organizer'}],
+      group: 'relationships',
     }),
 
     // --- Location group ---
@@ -232,6 +267,9 @@ export const event = defineType({
       hidden: ({document}) => document?.callForSpeakers === false,
     }),
   ],
+  initialValue: {
+    eventStatus: 'scheduled',
+  },
   orderings: [
     {
       title: 'Chronological',

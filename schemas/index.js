@@ -5,5 +5,6 @@ import provider from './provider'
 import person from './person'
 import collection from './collection'
 import book from './book'
+import organizer from './organizer'
 
-export const schemaTypes = [event, course, provider, person, collection, book]
+export const schemaTypes = [event, course, provider, person, collection, book, organizer]
