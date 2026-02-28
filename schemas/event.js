@@ -28,6 +28,48 @@ export const event = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'richDescription',
+      type: 'array',
+      title: 'Rich Description',
+      group: 'details',
+      description:
+        'Optional rich text description for the event detail page. Supports links, bold, and italic.',
+      of: [
+        {
+          type: 'block',
+          styles: [{title: 'Normal', value: 'normal'}],
+          lists: [],
+          marks: {
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'},
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL',
+                    validation: (Rule) =>
+                      Rule.uri({
+                        allowCredentials: false,
+                        allowRelative: true,
+                        relativeOnly: false,
+                        scheme: [/^http$/, /^https$/, /^mailto$/],
+                      }),
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    }),
+    defineField({
       title: 'Type',
       name: 'type',
       type: 'string',
