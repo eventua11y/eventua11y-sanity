@@ -234,7 +234,9 @@ export const event = defineType({
       name: 'location',
       type: 'string',
       group: 'location',
-      hidden: ({document}) => document?.type === 'theme' || document?.attendanceMode === 'online',
+      description:
+        'For awareness/theme days, use the country name (e.g. "UK") if it is not international.',
+      hidden: ({document}) => document?.type !== 'theme' && document?.attendanceMode === 'online',
     }),
     defineField({
       title: 'Geo location',
