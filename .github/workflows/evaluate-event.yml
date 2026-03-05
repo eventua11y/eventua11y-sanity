@@ -1,0 +1,28 @@
+name: 'Evaluate Event'
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  evaluate:
+    name: Evaluate event against curation policy
+    if: github.event.label.name == 'evaluate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Evaluate event
+        run: node scripts/evaluate-event.mjs --issue ${{ github.event.issue.number }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

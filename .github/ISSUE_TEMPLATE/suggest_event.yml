@@ -1,0 +1,19 @@
+name: Suggest an Event
+description: Suggest an event for inclusion in the Eventua11y calendar.
+labels: ['evaluate']
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Event website URL
+      description: The official website for the event.
+      placeholder: https://example.com/conference-2026
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else we should know? For example, specific accessibility sessions at a broader conference.
+    validations:
+      required: false
