@@ -101,6 +101,7 @@ export const event = defineType({
           {title: 'Demo', value: 'demo'},
           {title: 'Keynote', value: 'keynote'},
           {title: 'Announcement', value: 'announcement'},
+          {title: 'Hackathon', value: 'hackathon'},
           {title: 'Other', value: 'other'},
         ],
       },
