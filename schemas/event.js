@@ -331,7 +331,7 @@ export const event = defineType({
       options: {
         allowTimeZoneSwitch: true,
       },
-      hidden: ({document}) => document?.callForSpeakers === false,
+      hidden: ({document}) => document?.callForSpeakers !== true,
     }),
   ],
   initialValue: {
