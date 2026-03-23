@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "designing-agent-teams": {
+      "source": "mattobee/skills",
+      "sourceType": "github",
+      "computedHash": "891b128552fae4e116d60e4f046b6bd6284e79581053f3f23068f0cb15b2d3c7"
+    }
+  }
+}
