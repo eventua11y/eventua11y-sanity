@@ -4,7 +4,8 @@
   "mcp": {
     "sanity": {
       "type": "remote",
-      "url": "https://mcp.sanity.io"
+      "url": "https://mcp.sanity.io",
+      "oauth": {}
     }
   }
 }
