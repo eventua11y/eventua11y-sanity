@@ -20,6 +20,12 @@ export const topic = defineType({
       },
     }),
     defineField({
+      title: 'Description',
+      name: 'description',
+      type: 'text',
+      description: 'Short plain-text summary of this topic, used in listings and metadata.',
+    }),
+    defineField({
       title: 'Body',
       name: 'body',
       type: 'array',
