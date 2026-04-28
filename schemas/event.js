@@ -6,6 +6,7 @@ export const event = defineType({
   type: 'document',
   groups: [
     {name: 'details', title: 'Details', default: true},
+    {name: 'links', title: 'Links'},
     {name: 'relationships', title: 'Relationships'},
     {name: 'location', title: 'Location'},
     {name: 'dates', title: 'Dates'},
@@ -123,12 +124,6 @@ export const event = defineType({
       },
     }),
     defineField({
-      title: 'Website',
-      name: 'website',
-      type: 'url',
-      group: 'details',
-    }),
-    defineField({
       title: 'Event status',
       name: 'eventStatus',
       type: 'string',
@@ -155,6 +150,103 @@ export const event = defineType({
       options: {
         layout: 'tags',
       },
+    }),
+
+    // --- Links group ---
+    defineField({
+      title: 'Website',
+      name: 'website',
+      type: 'url',
+      group: 'links',
+      description: "Link to the event's main website or homepage.",
+      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
+    }),
+    defineField({
+      title: 'Registration URL',
+      name: 'registration',
+      type: 'url',
+      group: 'links',
+      description: 'Link to the event registration or ticket page.',
+      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
+    }),
+    defineField({
+      title: 'Code of conduct URL',
+      name: 'codeOfConduct',
+      type: 'url',
+      group: 'links',
+      description:
+        "Link to the event's published code of conduct. Required for events to be considered inclusive.",
+      validation: (Rule) => [
+        Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
+        Rule.custom((value) => {
+          if (!value) {
+            return {
+              level: 'warning',
+              message: 'Events without a code of conduct may not be considered inclusive.',
+            }
+          }
+          return true
+        }),
+      ],
+    }),
+    defineField({
+      title: 'Accessibility information',
+      name: 'accessibilityInfo',
+      type: 'object',
+      group: 'links',
+      description:
+        "Link to a page describing the event's accessibility provisions — e.g. captioning, sign language interpretation, venue access, quiet rooms, dietary accommodations, content warnings, remote attendance options. Link to the most detailed page available; the event homepage is a poor fallback.",
+      fields: [
+        defineField({
+          title: 'URL',
+          name: 'url',
+          type: 'url',
+          validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
+        }),
+        defineField({
+          title: 'Summary',
+          name: 'summary',
+          type: 'string',
+          description:
+            "Short plain-text summary of what's covered (e.g. 'Live captioning, step-free venue, quiet room'). Max 200 characters.",
+          validation: (Rule) => Rule.max(200),
+        }),
+      ],
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const doc = context.document
+          if (value?.url && doc?.website && value.url === doc.website) {
+            return {
+              level: 'warning',
+              message:
+                'Accessibility info should link to a dedicated page, not the event homepage.',
+            }
+          }
+          if (!value || (!value.url && !value.summary)) {
+            return {
+              level: 'warning',
+              message: 'Events without accessibility information may exclude attendees.',
+            }
+          }
+          return true
+        }),
+    }),
+    defineField({
+      title: 'Schedule URL',
+      name: 'schedule',
+      type: 'url',
+      group: 'links',
+      description:
+        'Link to the event programme or agenda. If the schedule is embedded on the homepage, link to the anchor (e.g. …/event#schedule).',
+      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
+    }),
+    defineField({
+      title: 'Call for speakers URL',
+      name: 'callForSpeakersLink',
+      type: 'url',
+      group: 'links',
+      description: 'Link to the open call for proposals. Leave blank once the CFP closes.',
+      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
     }),
 
     // --- Relationships group ---
