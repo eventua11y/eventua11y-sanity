@@ -174,20 +174,8 @@ export const event = defineType({
       name: 'codeOfConduct',
       type: 'url',
       group: 'links',
-      description:
-        "Link to the event's published code of conduct. Required for events to be considered inclusive.",
-      validation: (Rule) => [
-        Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
-        Rule.custom((value) => {
-          if (!value) {
-            return {
-              level: 'warning',
-              message: 'Events without a code of conduct may not be considered inclusive.',
-            }
-          }
-          return true
-        }),
-      ],
+      description: "Link to the event's published code of conduct.",
+      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
     }),
     defineField({
       title: 'Accessibility information',
@@ -212,24 +200,6 @@ export const event = defineType({
           validation: (Rule) => Rule.max(200),
         }),
       ],
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const doc = context.document
-          if (value?.url && doc?.website && value.url === doc.website) {
-            return {
-              level: 'warning',
-              message:
-                'Accessibility info should link to a dedicated page, not the event homepage.',
-            }
-          }
-          if (!value || (!value.url && !value.summary)) {
-            return {
-              level: 'warning',
-              message: 'Events without accessibility information may exclude attendees.',
-            }
-          }
-          return true
-        }),
     }),
     defineField({
       title: 'Schedule URL',
