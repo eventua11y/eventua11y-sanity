@@ -210,15 +210,6 @@ export const event = defineType({
         'Link to the event programme or agenda. If the schedule is embedded on the homepage, link to the anchor (e.g. …/event#schedule).',
       validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
     }),
-    defineField({
-      title: 'Call for speakers URL',
-      name: 'callForSpeakersLink',
-      type: 'url',
-      group: 'links',
-      description: 'Link to the open call for proposals. Leave blank once the CFP closes.',
-      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
-    }),
-
     // --- Relationships group ---
     defineField({
       title: 'This is a parent event',
@@ -393,6 +384,15 @@ export const event = defineType({
       options: {
         allowTimeZoneSwitch: true,
       },
+      hidden: ({document}) => document?.callForSpeakers !== true,
+    }),
+    defineField({
+      title: 'Call for speakers URL',
+      name: 'callForSpeakersLink',
+      type: 'url',
+      group: 'callForSpeakers',
+      description: 'Link to the open call for proposals. Leave blank once the CFP closes.',
+      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
       hidden: ({document}) => document?.callForSpeakers !== true,
     }),
   ],
