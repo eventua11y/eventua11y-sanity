@@ -12,12 +12,26 @@ This is a Sanity Studio instance for Eventua11y, managing content for the eventu
 - `npm run dev` - Start development server
 - `npm run start` - Start production server  
 - `npm run build` - Build the studio
-- `npm run deploy` - Deploy to Sanity hosting
+- `npm run deploy` - Deploy the full Studio (build + push hosted Studio app)
+- `npm run deploy-schema` - Deploy only the schema (validation rules, field definitions) without rebuilding the Studio
 - `npm run deploy-graphql` - Deploy GraphQL schema
 
 ### Code Quality
 - Prettier is configured with: semi: false, printWidth: 100, bracketSpacing: false, singleQuote: true
 - ESLint uses @sanity/eslint-config-studio v5.0.2
+
+## Schema Deployment
+
+The schema is defined in source files under `/schemas/`. **Always deploy schema changes via the Sanity CLI** (`npm run deploy-schema`, i.e. `sanity schema deploy`), not via MCP tools.
+
+The MCP `deploy_schema` tool is for MCP-managed workspaces. Using it on this project would adopt the legacy `system.schema` workspace into MCP management and cause the deployed schema to diverge from the source files in `/schemas/`. If that ever happens by accident, the next `sanity schema deploy` from source restores the canonical state.
+
+Typical workflow for a schema change:
+1. Edit the relevant file under `/schemas/`
+2. `npm run build` to verify it compiles
+3. Open a PR with the change
+4. After merge, run `npm run deploy-schema` to push validation rules and field definitions to the live Studio
+5. Run `npm run deploy` only if you also changed Studio configuration, structure, or plugins
 
 ## Architecture
 

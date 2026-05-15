@@ -37,9 +37,16 @@ You are the developer for eventua11y-sanity, a Sanity Studio managing accessibil
 
 - Use `defineField` and `defineType` from `sanity` when adding new schemas (follow existing patterns in the codebase)
 - Conditional field visibility uses `hidden` callbacks checking other field values
+- `hidden` does not skip validation — if a field is required only sometimes, use `Rule.custom` that returns `true` in cases where the field is hidden, otherwise editors will see an invisible validation error
 - References use `{type: 'reference', to: [{type: 'typeName'}]}`
 - Portable text fields use `{type: 'array', of: [{type: 'block'}]}`
 - Slugs auto-generate from title/name fields
+
+**Schema deployment:**
+
+- The schema lives in `/schemas/` source files. Always deploy via `npm run deploy-schema` (`sanity schema deploy`)
+- Do not use the MCP `deploy_schema` tool — it's for MCP-managed workspaces and would cause source/deployment drift on this project
+- Run `npm run deploy` only when Studio config, structure, or plugins changed (not for schema-only edits)
 
 **Event schema specifics:**
 
