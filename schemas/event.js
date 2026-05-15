@@ -270,7 +270,11 @@ export const event = defineType({
       name: 'attendanceMode',
       type: 'string',
       group: 'location',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.type === 'theme') return true
+          return value ? true : 'Attendance Mode is required'
+        }),
       initialValue: 'none',
       options: {
         list: [
@@ -281,7 +285,6 @@ export const event = defineType({
         ],
         layout: 'radio',
       },
-      hidden: ({document}) => document?.type === 'theme',
     }),
     defineField({
       title: 'Location',
