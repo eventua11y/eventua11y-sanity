@@ -52,7 +52,7 @@ Wrong: `Websites that work well use short sentences, plain language, consistent 
 
 Right: `Short sentences, plain language, and consistent navigation go a long way. Give people enough time, a way to undo mistakes, and content that doesn't move without warning.`
 
-**Formal constructions.** "Presents very differently from person to person" → "It's not one thing." "Co-occurs with" → "often comes alongside". "In contrast to" → "unlike".
+**Formal constructions.** "Presents very differently from person to person" → "It's not one thing." "Co-occurs with" → "often comes alongside" or "it's common alongside". "In contrast to" → "unlike". "Specific learning difficulty" → name the thing directly ("Dyslexia affects how people process written language"). "Neurodevelopmental condition" → drop the category and describe the effect.
 
 **Puffery.** "Genuinely useful", "incredibly powerful", "best-in-class". Say what the thing does, not how impressive it is.
 
@@ -174,6 +174,24 @@ Check technical claims before including them. Things that are commonly cited but
 - Specific figures for what proportion of the population has a given condition
 
 If you can't link to a primary source, make the qualitative version of the point.
+
+---
+
+## Topic description field
+
+The `description` field is a one or two sentence summary shown in listings and previews. It should introduce what the topic is, not describe what the body covers or give design guidance.
+
+Wrong: `Designing for people with cognitive and intellectual disabilities. Covers plain language, clear navigation, predictable interfaces, and reducing cognitive load.`
+Right: `Designing for people with cognitive and intellectual disabilities, memory differences, and learning difficulties.`
+
+Avoid clinical or diagnostic framing. Prefer plain, direct language over formal category terms:
+
+- Not "a specific learning difficulty" — describe the effect instead: "Dyscalculia affects how people understand numbers..."
+- Not "a neurodevelopmental condition" — describe the effect: "ADHD affects attention, impulse control, and executive function."
+- Not "co-occurs with" — "it's common alongside"
+- Not "umbrella term" — just name what it includes: "Dementia affects memory, language, attention, and reasoning. It includes conditions like Alzheimer's and vascular dementia."
+
+Descriptions don't need abbreviation expansion (the `body` does). Contractions are fine.
 
 ---
 
