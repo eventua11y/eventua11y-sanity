@@ -22,7 +22,7 @@
     "esbuild": "^0.28.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.6",
-    "react-is": "^19.2.5",
+    "react-is": "^19.2.6",
     "sanity": "^5.26.0",
     "styled-components": "^6.4.1"
   },
