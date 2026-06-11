@@ -18,13 +18,13 @@
   "dependencies": {
     "@sanity/cross-dataset-duplicator": "^1.5.1",
     "@sanity/google-maps-input": "^4.2.1",
-    "@sanity/vision": "^5.24.0",
+    "@sanity/vision": "^5.31.1",
     "esbuild": "^0.28.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.6",
-    "react-is": "^19.2.5",
-    "sanity": "^5.26.0",
-    "styled-components": "^6.4.1"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-is": "^19.2.7",
+    "sanity": "^5.31.1",
+    "styled-components": "^6.4.2"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^6.0.0",

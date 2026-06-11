@@ -1,5 +1,5 @@
 import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
+import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {crossDatasetDuplicator} from '@sanity/cross-dataset-duplicator'
 import {schemaTypes} from './schemas'
@@ -12,7 +12,7 @@ export default defineConfig([
     basePath: '/production',
     title: 'Production',
     plugins: [
-      deskTool(),
+      structureTool(),
       visionTool(),
       crossDatasetDuplicator({
         types: ['event'],
@@ -30,7 +30,7 @@ export default defineConfig([
     basePath: '/test',
     title: 'Development',
     plugins: [
-      deskTool(),
+      structureTool(),
       visionTool(),
     ],
     schema: {
