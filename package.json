@@ -19,11 +19,11 @@
     "@sanity/cross-dataset-duplicator": "^1.5.1",
     "@sanity/google-maps-input": "^4.2.1",
     "@sanity/vision": "^5.31.1",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-is": "^19.2.7",
-    "sanity": "^5.31.1",
+    "sanity": "^6.0.0",
     "styled-components": "^6.4.2"
   },
   "devDependencies": {
