@@ -151,6 +151,27 @@ export const event = defineType({
         layout: 'tags',
       },
     }),
+    defineField({
+      title: 'Hashtags',
+      name: 'hashtags',
+      type: 'array',
+      of: [{type: 'string'}],
+      group: 'details',
+      description:
+        'Hashtags the organizers use on social media, entered without the # (e.g. a11y, GAAD). ' +
+        'Displayed on the event page on eventua11y.com.',
+      options: {
+        layout: 'tags',
+      },
+      validation: (Rule) =>
+        Rule.custom((tags) => {
+          if (!tags) return true
+          const withHash = tags.filter((tag) => typeof tag === 'string' && tag.includes('#'))
+          return withHash.length
+            ? 'Enter hashtags without the # symbol (e.g. a11y, not #a11y)'
+            : true
+        }),
+    }),
 
     // --- Links group ---
     defineField({
