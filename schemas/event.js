@@ -334,7 +334,6 @@ export const event = defineType({
       type: 'boolean',
       group: 'dates',
       initialValue: true,
-      hidden: ({document}) => !document?.parent || document?.type === 'theme',
     }),
     defineField({
       title: 'Starts',
@@ -422,6 +421,7 @@ export const event = defineType({
   ],
   initialValue: {
     eventStatus: 'scheduled',
+    scheduled: true,
   },
   orderings: [
     {
