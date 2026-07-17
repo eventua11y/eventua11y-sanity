@@ -130,6 +130,7 @@ export const event = defineType({
       options: {
         source: 'title',
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: 'Event status',
