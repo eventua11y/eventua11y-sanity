@@ -26,7 +26,7 @@ export const event = defineType({
       name: 'description',
       type: 'text',
       group: 'details',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().max(220),
     }),
     defineField({
       name: 'richDescription',
@@ -34,7 +34,7 @@ export const event = defineType({
       title: 'Rich Description',
       group: 'details',
       description:
-        'Optional rich text description for the event detail page. Supports links, bold, and italic.',
+        'Rich text description for the event detail page. Supports links, bold, and italic.',
       of: [
         {
           type: 'block',
@@ -69,6 +69,14 @@ export const event = defineType({
           },
         },
       ],
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const doc = context.document
+          if (doc?.type === 'theme' || doc?.scheduled === false) return true
+          return Array.isArray(value) && value.length > 0
+            ? true
+            : 'Rich Description is required for scheduled non-theme events'
+        }),
     }),
     defineField({
       title: 'Type',
@@ -158,7 +166,7 @@ export const event = defineType({
       of: [{type: 'string'}],
       group: 'details',
       description:
-        'Hashtags the organizers use on social media, entered without the # (e.g. a11y, GAAD). ' +
+        'Hashtags the organizers use on social media, entered in CasedLikeThis without the # (e.g. A11yCamp, GAAD). ' +
         'Displayed on the event page on eventua11y.com.',
       options: {
         layout: 'tags',
@@ -167,8 +175,14 @@ export const event = defineType({
         Rule.custom((tags) => {
           if (!tags) return true
           const withHash = tags.filter((tag) => typeof tag === 'string' && tag.includes('#'))
-          return withHash.length
-            ? 'Enter hashtags without the # symbol (e.g. a11y, not #a11y)'
+          if (withHash.length) {
+            return 'Enter hashtags without the # symbol (e.g. A11yCamp, not #A11yCamp)'
+          }
+          const notCasedLikeThis = tags.filter(
+            (tag) => typeof tag === 'string' && !/^[A-Z][A-Za-z0-9]*$/.test(tag),
+          )
+          return notCasedLikeThis.length
+            ? 'Use CasedLikeThis hashtags (e.g. A11yCamp, A11yCamp2026)'
             : true
         }),
     }),
@@ -196,7 +210,13 @@ export const event = defineType({
       type: 'url',
       group: 'links',
       description: "Link to the event's published code of conduct.",
-      validation: (Rule) => Rule.uri({scheme: ['http', 'https'], allowRelative: false}),
+      validation: (Rule) =>
+        Rule.uri({scheme: ['http', 'https'], allowRelative: false}).custom((value, context) => {
+          if (context.document?.type === 'theme' || context.document?.attendanceMode === 'none') {
+            return true
+          }
+          return value ? true : 'Code of conduct URL is required for events with attendance'
+        }),
     }),
     defineField({
       title: 'Accessibility information',
@@ -270,6 +290,12 @@ export const event = defineType({
       type: 'reference',
       to: [{type: 'organizer'}],
       group: 'relationships',
+      hidden: ({document}) => document?.type === 'theme',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (context.document?.type === 'theme') return true
+          return value ? true : 'Organizer is required for non-theme events'
+        }),
     }),
     defineField({
       title: 'Topics',
