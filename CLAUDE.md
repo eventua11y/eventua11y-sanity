@@ -64,6 +64,15 @@ The event schema (`/schemas/event.js`) has sophisticated conditional logic:
 - Scheduled vs unscheduled events
 - Single-day events should NOT have an end date (dateEnd) set
 
+### Event Data Guardrails
+For non-theme scheduled events, make sure all of these are set before publishing:
+- `slug` is set
+- `organizer` is set
+- `description` stays concise (short summary)
+- `richDescription` contains the detailed event copy
+- `codeOfConduct` is set when attendance mode is online, offline, or mixed
+- `hashtags` use CasedLikeThis format and do not include `#`
+
 ### Content Relationships
 - Events can reference speakers (person type)
 - Events can have parent-child relationships
