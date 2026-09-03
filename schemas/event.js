@@ -151,6 +151,25 @@ export const event = defineType({
         layout: 'tags',
       },
     }),
+    defineField({
+      title: 'Hashtags',
+      name: 'hashtags',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+          validation: (Rule) =>
+            Rule.regex(/^[^#\s]+$/, {name: 'hashtag'}).error(
+              'Enter the hashtag without the # symbol and without spaces',
+            ),
+        },
+      ],
+      group: 'details',
+      description: 'Social media hashtags for this event, without the # symbol (e.g. UXScot, GAAD)',
+      options: {
+        layout: 'tags',
+      },
+    }),
 
     // --- Links group ---
     defineField({
